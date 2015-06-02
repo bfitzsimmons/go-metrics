@@ -1,17 +1,22 @@
 package metrics
 
 import (
-	"log"
+	"fmt"
 	"time"
 )
 
+type PrintLogger interface {
+	Printf(format string, v ...interface{})
+}
+
 // Output each metric in the given registry periodically using the given
 // logger.
-func Log(r Registry, d time.Duration, l *log.Logger) {
+func Log(r Registry, d time.Duration, l PrintLogger) {
 	for _ = range time.Tick(d) {
 		r.Each(func(name string, i interface{}) {
 			switch metric := i.(type) {
 			case Counter:
+				fmt.Println("I'm in here.")
 				l.Printf("counter %s\n", name)
 				l.Printf("  count:       %9d\n", metric.Count())
 			case Gauge:

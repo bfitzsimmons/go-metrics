@@ -2,8 +2,9 @@ package main
 
 import (
 	"errors"
-	"github.com/rcrowley/go-metrics"
-	// "github.com/rcrowley/go-metrics/stathat"
+
+	"github.com/bfitzsimmons/go-metrics"
+	// "github.com/bfitzsimmons/go-metrics/stathat"
 	"log"
 	"math/rand"
 	"os"
